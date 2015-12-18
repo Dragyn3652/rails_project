@@ -1,0 +1,21 @@
+<div> <%= form_for @user do |f| %> </div>
+
+<div><%= f.label :email %></div>
+<div><%= f.email_field :email %></div>
+
+<div><%= f.label :handle %></div>
+<div><%= f.text_field :handle %></div>
+
+<div><%= f.label :profile_image_uri %></div>
+<div><%= f.text_field :profile_image_uri %></div>
+
+
+<div><%= f.label :password %></div>
+<div><%= f.password_field :password %></div>
+
+<div><%= f.label :password_confirmation %></div>
+<div><%= f.password_field :password_confirmation%></div>
+
+<%= f.submit 'Edit User' %>
+
+<% end %>

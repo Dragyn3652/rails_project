@@ -1,0 +1,25 @@
+<% if current_user == @user %>
+  <h3>Your Profile</h3>
+<% else %>
+  <h3><%= @user.handle %>'s Profile</h3>
+<% end %>
+<table>
+<tr>
+<th><%= @user.handle %>'s Posts</th>
+<th>Likes</th>
+</tr>
+  <% @user.posts.each do |mumble| %>
+  <tr>
+    <td><%= post.text %></td>
+    <td><%= post.likes %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+<% if current_user %>
+  <%= link_to 'Logout', destroy_session_path %>
+
+<% else %>
+  <%= link_to 'Login', new_session_path %>
+<% end %>

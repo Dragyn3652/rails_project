@@ -1,0 +1,16 @@
+Here for the first time?
+<%= link_to 'Register a new account', new_user_path %>
+<br>
+Returning user? <%= link_to 'Log in to existing account', new_session_path %>
+
+<% @users %>
+<table>
+<tr>
+<th>Users</th>
+</tr>
+<% @users.each do |user| %>
+<tr>
+<td><%= user.email %></td>
+</tr>
+<% end %>
+</table>
