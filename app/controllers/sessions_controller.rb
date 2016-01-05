@@ -1,25 +1,34 @@
 class SessionsController < ApplicationController
-  def new
-    @user = User.new
+   def new
+    redirect_to dashboard_path if logged_in?
+    @title = "Log in"
   end
 
   def create
-      user = User.where( email: user_params[:email]).first
-    if user && user.authenticate(user_params[:password])
-      session[:user_id] = user.id
-      redirect_to show_path(user)
+    # NOTE: I don't need user to be an instance variable but it is on so that the test could pass.
+    # The test uses assigns
+    @user = User.find_by_username(params[:session][:login]) || User.find_by_email(params[:session][:login])
+    if @user && @user.authenticate(params[:session][:password])
+      if params[:session][:remember_me] == "1"
+        cookies.permanent[:auth_token] = @user.auth_token
+      else
+        cookies[:auth_token] = @user.auth_token
+      end
+
+      flash[:success] = "Logged in successfully!"
+      redirect_to_target_or_default dashboard_path
     else
-      redirect_to new_session_path
+      @title = "Log in"
+      flash.now[:alert] = "Invalid login/password combination"
+      render 'new'
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to users_path
+    cookies[:auth_token] = nil
+    redirect_to root_path
   end
 
-  private
-  def user_params
-     params.require(:user).permit(:email, :password)
-   end
+
+
 end
