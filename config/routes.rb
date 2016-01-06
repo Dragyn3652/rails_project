@@ -1,22 +1,32 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root 'users#index'
-  get 'users/index', as: :users
 
-  get 'welcome/index'
-  get 'users/new' => 'users#new', as: :new_user
+  resources :users, only: [:new, :create, :show, :edit, :update] do
+    resources :posts, only: [:index, :create]
+  end
 
-  get 'users/:id' => 'users#show', as: :show
-  post 'users/:id' => 'users#create', as: :create
+  resources  :session, only: [:new, :create, :destroy]
 
-  get 'users/:id/edit' => 'users#edit', as: :edit_user
-  patch 'users/:id' => 'users#update', as: :user
+  resources :posts, only: [:index, :show, :edit, :update, :destroy]
+end
 
-  get 'sessions/new' => 'sessions#new', as: :new_session
-  post 'sessions/new' => 'sessions#create', as: :create_session
+  # get 'sessions/new'
 
-  get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
+  # get 'users/index', as: :users
+
+  # get 'welcome/index'
+  # get 'users/new' => 'users#new', as: :new_user
+
+  # get 'users/:id' => 'users#show', as: :show
+  # post 'users/:id' => 'users#create', as: :create
+
+  # get 'users/:id/edit' => 'users#edit', as: :edit_user
+  # patch 'users/:id' => 'users#update', as: :user
+
+  # get 'sessions/new' => 'sessions#new', as: :new_session
+  # post 'sessions/new' => 'sessions#create', as: :create_session
+
+  # get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -73,4 +83,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+# end

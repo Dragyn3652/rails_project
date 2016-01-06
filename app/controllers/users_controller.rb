@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "You have successfully signed up!"
+      flash[:notice] = "You have successfully registered!"
       session[:user_id] = @user.id # login
       redirect_to user_path(@user)
     else
@@ -20,13 +20,13 @@ class UsersController < ApplicationController
   def show
     # @user = User.find(params[:id]) # being done in authorize
 
-    @post_message = "So what do you want to do tonight?"
+    @post_message = "What do you want to share today?"
   end
 
   def edit
     @user = User.find(params[:id]) # being done in authorize
 
-    @post_message = "I guess I just have to figure out who I am supposed to be…"
+    @post_message = "I'll figure it out one day"
   end
 
   def update
@@ -53,13 +53,4 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to root_path if @user != current_user
     end
-end
-      redirect_to :edit
-    end
-  end
-
-  private
-  def user_params
-     params.require(:user).permit(:email, :handle, :profile_image_uri, :password,:password_confirmation)
-   end
 end

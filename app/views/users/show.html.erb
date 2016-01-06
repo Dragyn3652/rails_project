@@ -1,25 +1,48 @@
-<% if current_user == @user %>
-  <h3>Your Profile</h3>
-<% else %>
-  <h3><%= @user.handle %>'s Profile</h3>
-<% end %>
-<table>
-<tr>
-<th><%= @user.handle %>'s Posts</th>
-<th>Likes</th>
-</tr>
-  <% @user.posts.each do |mumble| %>
-  <tr>
-    <td><%= post.text %></td>
-    <td><%= post.likes %></td>
-  </tr>
+<div class="row text-center">
+  <% if flash[:notice] %>
+    <h4 class="warning-notice"><%= flash[:notice] %></h4>
   <% end %>
-</table>
 
+  <div class="col-xs-6 col-md-4">
+    <h3>Create a New Post</h3>
 
-<% if current_user %>
-  <%= link_to 'Logout', destroy_session_path %>
+    <% if @post && @post.errors %>
+      <p>Your post failed:</p>
+      <ul class="error-messages">
+        <% @post.errors.full_messages.each do |e| %>
+          <li class="warning-notice"><%= e %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-<% else %>
-  <%= link_to 'Login', new_session_path %>
-<% end %>
+    <div class="post-new">
+      <%= form_for [@user, Post.new] do |f| %>
+        <div class="field form-group">
+          <%= f.label :text %>
+          <%= f.text_area :text, class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :image_uri %>
+          <%= f.text_field :image_uri, class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= f.label :tags %>
+          <%= f.text_field :tags, class: "form-control" %>
+        </div>
+
+        <%= hidden_field_tag "redirect", user_path(@user) %>
+
+        <div class="actions"><%= f.submit "Share", class: "btn btn-primary" %></div>
+      <% end %>
+    </div> <!-- post-new -->
+  </div>
+
+  <div class="col-xs-6 col-md-8">
+    <h3>Recent Posts</h3>
+    <% @user.posts.take(10).each do |post| %>
+      <div class="col-md-6">
+          <%= render 'posts/post', post: post %>
+      </div>
+    <% end %>
+  </div>
+</div>

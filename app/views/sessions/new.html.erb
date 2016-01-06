@@ -1,16 +1,21 @@
-<%= form_for :session, :url => new_session_path do |f| %>
-  <div class="field">
-    <p><%= f.label :login, "Login" %></p>
-    <p><%= f.text_field :login %></p>
+<div class="row text-center">
+  <h3>Log in to account</h3>
+    <div class="simple">
+      <% if flash[:notice] %>
+        <h4 class="warning-notice"><%= flash[:notice] %></h4>
+      <% end %>
+
+      <%= form_tag session_path do %>
+        <div class="field form-group">
+          <%= label_tag :email %>
+          <%= text_field_tag :email, params[:email], class: "form-control" %>
+        </div>
+        <div class="field form-group">
+          <%= label_tag :password %>
+          <%= password_field_tag :password, nil, class: "form-control" %>
+        </div>
+        <div class="actions"><%= submit_tag "Log in", class: "btn btn-default" %></div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <p><%= f.label :password, "Password" %></p>
-    <p><%= f.password_field :password %></p>
-  </div>
-
-  <p><%= f.check_box :remember_me %>
-     <%= f.label :remember_me, "Remember Me" %></p>
-
-  <p class="button"><%= f.submit "Log in", :disable_with => 'Loging in...' %></p>
-<% end %>
+</div>

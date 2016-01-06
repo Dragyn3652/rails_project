@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+  <div class="splash-image"></div>
+  <div class="user-image">
+    <%= image_tag @user.profile_image_uri, width: "300px", class: "img-circle" %>
+    <div class="caption text-over-image">
+      <h1><%= @user.handle %></h1>
+      <% if params[:action] == "show" %>
+        <p><%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary btn-lg", role: "button" %></p>
+      <% else %>
+        <p><%= link_to "Create a post", user_path(@user), class: "btn btn-primary btn-lg", role: "button" %></p>
+      <% end %>
+    </div>
+  </div>
+  <h3><em><%= @clipr_message || "Welcome to Clipr…" %></em></h3>
+</div>

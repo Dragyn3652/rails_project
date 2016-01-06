@@ -1,0 +1,25 @@
+<div class="row text-center">
+  <% if @user %>
+    <div class="user-image">
+      <%= image_tag @user.profile_image_uri, width: "200px", class: "img-circle" %>
+      <div class="caption text-over-image shrink">
+        <h1><%= @user.handle %></h1>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-sm-6 col-md-4 post-container">
+    <% @mumbles.iterate_every(3) do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+  </div>
+  <div class="col-sm-6 col-md-4 post-container">
+    <% @mumbles.iterate_every(3, 1) do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+  </div>
+  <div class="col-sm-6 col-md-4 post-container">
+    <% @mumbles.iterate_every(3, 2) do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+  </div>
+</div>

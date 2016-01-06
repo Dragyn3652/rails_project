@@ -1,0 +1,33 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <h4>Form is invalid:</h4>
+    <ul class="error-messages">
+      <% @user.errors.full_messages.each do |message| %>
+        <li class="warning-notice"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :handle %>
+    <%= f.text_field :handle, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :profile_image_uri, "Profile Image Link" %>
+    <%= f.text_field :profile_image_uri, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="actions"><%= f.submit "Submit", class: "btn btn-default" %></div>
+<% end %>

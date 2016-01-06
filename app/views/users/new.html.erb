@@ -1,21 +1,6 @@
-<div> <%= form_for @user do |f| %> </div>
-
-<div><%= f.label :email %></div>
-<div><%= f.email_field :email %></div>
-
-<div><%= f.label :handle %></div>
-<div><%= f.text_field :handle %></div>
-
-<div><%= f.label :profile_image_uri %></div>
-<div><%= f.text_field :profile_image_uri %></div>
-
-
-<div><%= f.label :password %></div>
-<div><%= f.password_field :password %></div>
-
-<div><%= f.label :password_confirmation %></div>
-<div><%= f.password_field :password_confirmation%></div>
-
-<%= f.submit 'Sign Up' %>
-
-<% end %>
+<div class="row text-center">
+  <h3>Register a new account</h3>
+  <div class="simple">
+    <%= render 'form' %>
+  </div>
+</div>
