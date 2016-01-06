@@ -3,3 +3,14 @@
     <%= render 'post', post: @post %>
   </div>
 </div>
+<div class="row">
+  <div class="text-center">
+    <iframe
+      id="ytplayer"
+      type="text/html"
+      width="640"
+      height="390"
+      src="<%= "http://www.youtube.com/embed/#{@post.youtube_embed_id}" %>"
+      frameborder="0"
+    /></iframe>
+  </div>
