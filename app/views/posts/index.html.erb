@@ -8,17 +8,17 @@
     </div>
   <% end %>
   <div class="col-sm-6 col-md-4 post-container">
-    <% @mumbles.iterate_every(3) do |post| %>
+    <% @posts.iterate_every(3) do |post| %>
       <%= render 'post', post: post %>
     <% end %>
   </div>
   <div class="col-sm-6 col-md-4 post-container">
-    <% @mumbles.iterate_every(3, 1) do |post| %>
+    <% @posts.iterate_every(3, 1) do |post| %>
       <%= render 'post', post: post %>
     <% end %>
   </div>
   <div class="col-sm-6 col-md-4 post-container">
-    <% @mumbles.iterate_every(3, 2) do |post| %>
+    <% @posts.iterate_every(3, 2) do |post| %>
       <%= render 'post', post: post %>
     <% end %>
   </div>

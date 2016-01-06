@@ -1,7 +1,9 @@
 <div class="post post-new">
+
   <%= link_to(params[:action] == "show" ? post.image_uri : post_path(post)) do %>
     <%= image_tag(post.image_uri, class: "post-pic") if post.has_image? %>
   <% end %>
+
   <%= link_to post_path(post), class: "post-link" do %>
     <p><%= raw(post.text) %></p>
     <p><span class="tags"><%= post.tags %></span></p>
