@@ -1,32 +1,59 @@
 class UsersController < ApplicationController
-  # before_action :authorize, only: [:show]
-  def index
-    @users = User.all
-  end
+  before_action :authenticate, only: [:show, :edit, :update]
+  before_action :authorize, only: [:show, :edit, :update]
+
   def new
     @user = User.new
   end
+
   def create
-    if User.new(user_params).save
-      redirect_to users_path
+    @user = User.new(user_params)
+    if @user.save
+      flash[:notice] = "You have successfully signed up!"
+      session[:user_id] = @user.id # login
+      redirect_to user_path(@user)
     else
-      redirect_to new_user_path
+      render :new
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id]) # being done in authorize
+
+    @post_message = "So what do you want to do tonight?"
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) # being done in authorize
+
+    @post_message = "I guess I just have to figure out who I am supposed to be…"
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      redirect_to users_path(@user)
+
+    if @user.update(user_params)
+      redirect_to user_path(@user)
     else
+      render :edit
+    end
+  end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:email, :handle, :profile_image_uri, :password, :password_confirmation)
+    end
+
+    def authenticate
+      redirect_to new_session_path, alert: 'You must be logged in to continue!' if current_user.nil?
+    end
+
+    def authorize
+      @user = User.find(params[:id])
+      redirect_to root_path if @user != current_user
+    end
+end
       redirect_to :edit
     end
   end

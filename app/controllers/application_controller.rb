@@ -3,23 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
- helper_method :current_user, :logged_in?, :admin?, :redirect_to_target_or_default
+  private
 
-  def current_user
-    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
-  end
+    helper_method :current_user
 
-  def logged_in?
-    current_user
-  end
-
-  def admin?
-    current_user.admin.to_i == 1
-  end
-
-  def redirect_to_target_or_default(default, *args)
-    redirect_to(session[:return_to] || default, *args)
-    session[:return_to] = nil
-  end
-
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
 end
+
