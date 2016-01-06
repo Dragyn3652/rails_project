@@ -15,3 +15,20 @@
       frameborder="0"
     /></iframe>
   </div>
+<br>
+<%= form_for @comment do |f| %>
+<div>
+<%= f.label :comment_here %>
+<%= f.text_area :body %>
+</div>
+<div>
+<%= f.hidden_field :post_id, :value => @post.id %>
+</div>
+<div>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+</div>
+<%= f.submit %>
+<% end %>
+<br>
+
+<%= render :partial => 'comment', :collection => @post.comments %>

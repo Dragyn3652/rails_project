@@ -5,9 +5,15 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :create]
   end
 
-  resources  :session, only: [:new, :create, :destroy]
+  resources  :sessions, only: [:new, :create, :destroy]
 
   resources :posts, only: [:index, :show, :edit, :update, :destroy]
+
+  get 'comments/' => 'comments#index', as: :comments
+
+  post 'comments/' => 'comments#create'
+
+  delete 'comments/:id' => 'comments#destroy', as: :comment_post
 end
 
   # get 'sessions/new'

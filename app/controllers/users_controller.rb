@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate, only: [:show, :edit, :update]
   before_action :authorize, only: [:show, :edit, :update]
 
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -18,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id]) # being done in authorize
+    @user = User.find(params[:id]) # being done in authorize
 
     @post_message = "What do you want to share today?"
   end
