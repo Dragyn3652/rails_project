@@ -1,3 +1,3 @@
 <%= simple_format h(comment.body) %>
  <%= link_to 'Delete Comment', [comment, @post],
-   :method => :delete if current_user %>
+   method: :delete if current_user %>

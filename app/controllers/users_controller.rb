@@ -24,13 +24,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id]) # being done in authorize
     @posts = @user.posts
-    @post_message = "What do you want to share today?"
   end
 
   def edit
     @user = User.find(params[:id]) # being done in authorize
 
-    @post_message = "I'll figure it out one day"
   end
 
   def update
