@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :users, only: [:new, :create, :show, :edit, :update] do
-    resources :posts, only: [:index, :create]
+    resources :posts, only: [:index, :create, :show]
   end
 
-  resources  :sessions, only: [:new, :create, :destroy]
+  post 'sessions/new' => 'sessions#create', as: :create_session
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :posts, only: [:index, :show, :edit, :update, :destroy]
 
@@ -30,7 +32,6 @@ end
   # patch 'users/:id' => 'users#update', as: :user
 
   # get 'sessions/new' => 'sessions#new', as: :new_session
-  # post 'sessions/new' => 'sessions#create', as: :create_session
 
   # get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
 

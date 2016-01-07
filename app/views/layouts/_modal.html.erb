@@ -19,17 +19,17 @@
                     <!-- Sessions.new.html.erb below; render as partial. -->
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                    <%= form_for(:session, url: new_session_path) do |f| %>
-                        <%= f.label :email %>
-                        <%= f.email_field :email %>
-                        <%= f.label :password %>
-                        <%= f.password_field :password %>
-                        <%= f.label :remember_me, class: "checkbox inline" do %>
-                        <%= f.check_box :remember_me %>
-                        <span>Remember me on this computer</span>
-                        <% end %>
-                        <%= f.submit "Log in", class: "btn btn-primary" %>
-                    <% end %>
+                    <%= form_tag sessions_path do %>
+                      <div class="field form-group">
+                          <%= label_tag :email %>
+                          <%= text_field_tag :email, params[:email], class: "form-control" %>
+                        </div>
+                        <div class="field form-group">
+                          <%= label_tag :password %>
+                          <%= password_field_tag :password, nil, class: "form-control" %>
+                        </div>
+                        <div class="actions"><%= submit_tag "Log in", class: "btn btn-default" %></div>
+                      <% end %>
                     </div>
                 </div>
                 </div>
@@ -38,19 +38,28 @@
                     <div class="col-md-6 col-md-offset-3">
                     <!-- Calling User.new below; instance of model. Can't call a variable, this page won't see it. -->
                     <%= form_for User.new do |f| %>
-                          <%= f.label :email %>
-                          <%= f.text_field :email %>
-                          <%= f.label :handle %>
-                          <%= f.email_field :handle %>
-                          <%= f.label :profile_image_uri, "Profile Image Link" %>
-                          <%= f.text_field :profile_image_uri, class: "form-control" %>
-                          <%= f.label :password %>
-                          <%= f.password_field :password %>
-                          <%= f.label :password_confirmation, "Confirmation" %>
-                          <%= f.password_field :password_confirmation %>
-                          <div id = "register">
-                          <%= button_to "Create my Account", new_user_path %>
-                          </div>
+                      <div class="field form-group">
+                        <%= f.label :email %>
+                        <%= f.text_field :email, class: "form-control" %>
+                      </div>
+                      <div class="field form-group">
+                        <%= f.label :handle %>
+                        <%= f.text_field :handle, class: "form-control" %>
+                      </div>
+                      <div class="field form-group">
+                        <%= f.label :profile_image_uri, "Profile Image Link" %>
+                        <%= f.text_field :profile_image_uri, class: "form-control" %>
+                      </div>
+                      <div class="field form-group">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, class: "form-control" %>
+                      </div>
+                      <div class="field form-group">
+                        <%= f.label :password_confirmation %>
+                        <%= f.password_field :password_confirmation, class: "form-control" %>
+                      </div>
+                      <div class="actions"><%= f.submit "Submit", class: "btn btn-default" %></div>
+                    </div>
                     <% end %>
                     </div>
                 </div>
