@@ -14,5 +14,13 @@
     <%= link_to post.user.handle, user_posts_path(post.user) %>
     <%= image_tag post.user.profile_image_uri, width: "1em", class: "img-circle post-thumbnail" %>
     <%= link_to("(Delete)", post_path(post), method: :delete) if post.user == current_user %>
+    <iframe
+      id="ytplayer"
+      type="text/html"
+      width="640"
+      height="390"
+      src="<%= "http://www.youtube.com/embed/#{post.youtube_embed_id}" %>"
+      frameborder="0"
+    /></iframe>
   </p>
 </div>

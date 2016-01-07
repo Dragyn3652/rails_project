@@ -27,7 +27,7 @@
 
         <% if current_user %>
           <%= link_to('Your profile', user_path(current_user), class: "btn btn-default navbar-btn", type: "button") if params[:controller] != "users" %>
-          <%= link_to 'Log out', new_session_path, class: "btn btn-default navbar-btn", type: "button" %>
+          <%= link_to 'Log out', new_session_path, class: "btn btn-default navbar-btn", type: "button", method: :delete %>
         <% else %>
           <%= link_to "Log in", new_session_path, class: "btn btn-default navbar-btn", type: "button" %>
           <%= link_to "Register a new account", new_user_path, class: "btn btn-default navbar-btn", type: "button" %>
