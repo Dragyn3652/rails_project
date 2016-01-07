@@ -1,0 +1,68 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title" id="myModalLabel">Welcome to Clipr.</h4>
+            </div>
+            <div class="modal-body">
+                <!-- All of your modal/form stuff goes here. -->
+            <div class="modal-body">
+            <div class="well">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+                <li><a href="#create" data-toggle="tab">Register</a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane active in" id="login">
+                      <!--You want to keep the stuff above so you can toggle between Login and Register. -->
+                    <!-- Sessions.new.html.erb below; render as partial. -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                    <%= form_for(:session, url: new_session_path) do |f| %>
+                        <%= f.label :email %>
+                        <%= f.email_field :email %>
+                        <%= f.label :password %>
+                        <%= f.password_field :password %>
+                        <%= f.label :remember_me, class: "checkbox inline" do %>
+                        <%= f.check_box :remember_me %>
+                        <span>Remember me on this computer</span>
+                        <% end %>
+                        <%= f.submit "Log in", class: "btn btn-primary" %>
+                    <% end %>
+                    </div>
+                </div>
+                </div>
+                <div class="tab-pane fade" id="create">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                    <!-- Calling User.new below; instance of model. Can't call a variable, this page won't see it. -->
+                    <%= form_for User.new do |f| %>
+                          <%= f.label :email %>
+                          <%= f.text_field :email %>
+                          <%= f.label :handle %>
+                          <%= f.email_field :handle %>
+                          <%= f.label :profile_image_uri, "Profile Image Link" %>
+                          <%= f.text_field :profile_image_uri, class: "form-control" %>
+                          <%= f.label :password %>
+                          <%= f.password_field :password %>
+                          <%= f.label :password_confirmation, "Confirmation" %>
+                          <%= f.password_field :password_confirmation %>
+                          <div id = "register">
+                          <%= button_to "Create my Account", new_user_path %>
+                          </div>
+                    <% end %>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+    </div>
+  </div>
+</div>
+Add Comment
