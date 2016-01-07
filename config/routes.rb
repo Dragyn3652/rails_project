@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+    resources :posts, only: [:index, :show]
+  end
+
   root 'posts#index'
 
   resources :users, only: [:new, :create, :show, :edit, :update] do
@@ -16,6 +21,8 @@ Rails.application.routes.draw do
   post 'comments/' => 'comments#create'
 
   delete 'comments/:id' => 'comments#destroy', as: :comment_post
+
+
 end
 
   # get 'sessions/new'
