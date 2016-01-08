@@ -9,11 +9,7 @@
     <p><span class="tags"><%= post.tags %></span></p>
   <% end %>
 
-  <p class="post-data">
-    Posted <%= post.formatted_time %> by
-    <%= link_to post.user.handle, user_path(post.user) %>
-    <%= image_tag post.user.profile_image_uri, width: "1em", class: "img-circle post-thumbnail" %>
-    <%= link_to("(Delete)", post_path(post), method: :delete) if post.user == current_user %>
+    <div>
     <iframe
       id="ytplayer"
       type="text/html"
@@ -22,5 +18,11 @@
       src="<%= "https://www.youtube.com/embed/#{post.youtube_embed_id}" %>"
       frameborder="0"
     /></iframe>
+    </div>
+  <p class="post-data">
+    Posted <%= post.formatted_time %> by
+    <%= link_to post.user.handle, user_path(post.user) %>
+    <%= image_tag post.user.profile_image_uri, width: "1em", class: "img-circle post-thumbnail" %>
+    <%= link_to("(Delete)", post_path(post), method: :delete) if post.user == current_user %>
   </p>
 </div>

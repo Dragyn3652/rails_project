@@ -1,28 +1,12 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clipr is a Rails App for you to share your favorite youtube videos with your friends.
 
-Things you may want to cover:
+When you first log on you are brought to a posts index page where you can see the videos others have posted. When logged in you can post and delete comments, you will also be able to update your profile information, and delete the videos you have posted.
 
-* Ruby version
+Rails was used to create the app, bootstrap was used to style the page.
 
-* System dependencies
+Problems I didn't solve had mostly to do with styling. In the future I would add a search option and the ability to search by tag.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+current version is deployed on heroku you can find below
+https://clipr.herokuapp.com/

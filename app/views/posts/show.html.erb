@@ -1,10 +1,14 @@
-<div class="post-center">
+<div class= "row">
+<div class="col-md-8 col-md-offset-4">
   <div class="simple">
     <%= render 'post', post: @post %>
   </div>
 </div>
+</div>
 
 <br>
+<div class= "row">
+<div class="post-center col-md-8 col-md-offset-4">
 <%= form_for @comment do |f| %>
 <div>
 <%= f.label :comment %>
@@ -21,3 +25,5 @@
 <br>
 
 <%= render partial: 'comment', :collection => @post.comments %>
+</div>
+</div>
