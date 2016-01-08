@@ -2,6 +2,12 @@
   <% if flash[:notice] %>
     <h4 class="warning-notice"><%= flash[:notice] %></h4>
   <% end %>
+<div class="caption text-over-image">
+      <h1><%= @user.handle %></h1>
+    </div>
+<div class="user-image">
+    <%= image_tag @user.profile_image_uri, width: "150px", class: "img-circle" %>
+</div>
 
 <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-default navbar-btn", type: "button" %>
 

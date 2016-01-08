@@ -9,12 +9,11 @@
   <%= csrf_meta_tags %>
 </head>
 
+    <%= render 'layouts/header' %>
     <%= render 'layouts/nav' %>
 <body>
   <header>
-    <% if params[:controller] == "users" && (["show", "edit"].include? params[:action]) %>
-      <%= render 'layouts/header' %>
-    <% end %>
+
   </header>
 
   <div class="container">
