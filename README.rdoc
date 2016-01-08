@@ -6,7 +6,10 @@ When you first log on you are brought to a posts index page where you can see th
 
 Rails was used to create the app, bootstrap was used to style the page.
 
-Problems I didn't solve had mostly to do with styling. In the future I would add a search option and the ability to search by tag.
+Problems I didn't solve had mostly to do with styling. In the future I would add a search option and the ability to search by tag and likes.
+
+here is the trello I created for this project
+https://trello.com/b/dRBB3fe0/project-2-rails
 
 current version is deployed on heroku you can find below
 https://clipr.herokuapp.com/
