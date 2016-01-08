@@ -107,28 +107,9 @@ h5 {
 
 
 /* Navbar */
-.navbar-collapse,
-.navbar-form,
-.navbar-toggle,
-.navbar-form {
-  border: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+.navbar {
+  position: relative;
 }
-
-.navbar-form { display: inline-block; }
-.collapsing .navbar-form,
-.collapse.in .navbar-form {
-  display: block;
-}
-
-.navbar-inverse {
-  background-color: $clipr-gray;
-  border-color:     $clipr-gray;
-  border-radius:    0;
-}
-.navbar-brand { line-height: 10px; }
-.nav-logo { height: 100%; }
 
 /* Post rows, columns and containers */
 .row .simple {

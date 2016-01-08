@@ -3,6 +3,8 @@
     <h4 class="warning-notice"><%= flash[:notice] %></h4>
   <% end %>
 
+<%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-default navbar-btn", type: "button" %>
+
   <div class="col-xs-6 col-md-4">
     <h3>Create a New Post</h3>
 
