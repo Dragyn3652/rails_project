@@ -16,13 +16,6 @@ class Post < ActiveRecord::Base
     super.order created_at: :desc
   end
 
-  def self.search(pattern)
-    pattern.blank? ? self.all : self.joins(:user).where(
-      'lower(text) LIKE ? OR lower(tags) LIKE ? OR lower(handle) LIKE ?',
-      "%#{pattern}%".downcase, "%#{pattern}%".downcase, "%#{pattern}%".downcase
-    )
-  end
-
   def has_image?
     image_uri && !image_uri.empty?
   end
