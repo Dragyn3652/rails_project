@@ -1,13 +1,12 @@
     <div class="navbar">
-
-        <li><a href="#" class="btn btn-sm btn-default"
-       data-toggle="modal" data-controls-modal="modal-from-dom" data-backdrop="static" data-keyboard="true" data-target="#loginModal">Login or Register</a></li>
-
        <%= link_to 'Home', root_path, class: "btn btn-default navbar-btn", type: "button" %>
-
     <% if current_user %>
       <%= link_to('Your profile', user_path(current_user), class: "btn btn-default navbar-btn", type: "button") if params[:controller] != "users" %>
       <%= link_to 'Log out', new_session_path, class: "btn btn-default navbar-btn", type: "button", method: :delete %>
-      <% end %>
+      <% else %>
+        <a href="#" class="btn btn-sm btn-default"
+       data-toggle="modal" data-controls-modal="modal-from-dom" data-backdrop="static" data-keyboard="true" data-target="#loginModal">Login or Register</a></li>
+
+    <% end %>
 
         </div>

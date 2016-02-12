@@ -5,8 +5,9 @@
 <div class="user-image">
     <%= image_tag @user.profile_image_uri, width: "150px", class: "img-circle" %>
 </div>
-
+ <% if current_user.id === @user.id %>
 <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-default navbar-btn", type: "button" %>
+
 
   <div class="col-xs-6 col-md-4">
     <h3>Create a New Post</h3>
@@ -41,6 +42,7 @@
       <% end %>
     </div> <!-- post-new -->
   </div>
+  <% end %>
 
   <div class="col-xs-6 col-md-8">
     <h3>Recent Posts</h3>
